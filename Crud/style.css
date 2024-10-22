@@ -1,0 +1,115 @@
+nav {
+    background-color: rgb(33, 167, 122);
+    
+}
+
+#sendBtn {
+    padding: 30px;
+    width: 40vh;
+    border-radius: 25px;
+}
+
+#addClientBtn {
+padding: 15px;
+border: none;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background-color: rgb(33, 167, 122);
+width: 25vh;
+}
+
+.title {
+    text-align: center;
+    font-size: xx-large;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.tableProperties {
+    background-color: rgb(33, 167, 122);
+    padding: 20px;
+}
+
+#table {
+    background-color: rgb(255, 243, 243);
+    display: flex;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+#deleteBtn {
+    background-color: red;
+
+}
+
+#deleteBtn:hover{
+    background-color: rgba(207, 0, 0, 0.822);
+}
+
+.actionBtn {
+    padding: 2vh;
+    border: 0px;
+    border-radius: 1vh;
+    font-size: medium;
+}
+
+#nexClient {
+    background-color: rgb(33, 167, 122);
+    text-align: center;
+    font-size: xx-large;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    object-fit: cover;
+
+}
+
+#sectionAddClient  {
+    background-color:azure;
+    display: flex;
+    width: 70vh;
+    height: 70vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid gray;
+
+}
+
+.insertInformations {
+    display: block; /* Faz com que o label ocupe toda a largura disponível */
+    margin-top: 10px; /* Espaçamento entre os inputs */
+    font-size: medium;
+    width: 80%
+}
+
+.inputInformations {
+    width: 90%; /* Faz com que o input ocupe toda a largura do seu container */
+    padding: 10px; /* Adiciona espaço interno ao input */
+    border: 1px solid #ccc; /* Define uma borda */
+    border-radius: 4px; /* Borda arredondada */
+    box-sizing: border-box; /* Inclui o padding e border na largura total do input */
+    margin: 8px 8px; /* Adiciona margem em cima e embaixo */
+}
+
+
+
+.inputInformations:hover {
+    border: 3px solid green;
+}
+
+#llll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    position: fixed; /* Fixa o modal na tela */
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Move o modal para o centro */
+}
+
+.modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semitransparente */
+}

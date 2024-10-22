@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="global.css">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+    <nav>
+        <h1 class="title">Cadastro de Clientes</h1>
+    </nav>
+
+    <section id="table">
+    <table>
+        <thead>
+        <tr>
+            <th class="tableProperties" scope="col"><h2>Nome</h2></th>
+            <th class="tableProperties" scope="col"><h2>telefone</h2></th>
+            <th class="tableProperties" scope="col"><h2>Gmail</h2></th>
+            <th class="tableProperties" scope="col"><h2>Ação</h2></th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    </table>
+    <button id="addClientBtn">CADASTRAR CLIENTE</button>
+
+  </section>
+
+  <dialog class="modal">
+    <section id="sectionAddClient">
+        <h2 id="nexClient">Novo Cliente</h2>
+        <label class="insertInformations name">Insira o nome:
+        <input type="text" class="inputInformations name">
+    </label>
+    <label  class="insertInformations phone ">Insira o telefone:
+        <input type="text" class="inputInformations phone">
+    </label>
+    <label class="insertInformations gmail">Insira o Gmail:
+        <input type="text" class="inputInformations gmail">
+    </label>
+    <button id="sendBtn">Enviar</button>
+</section>
+</dialog>
+
+    <script src="Crud.js"></script>
+</main>
+</body>
+</html>
