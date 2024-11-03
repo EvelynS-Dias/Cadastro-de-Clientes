@@ -20,15 +20,28 @@ class Usuario {
     }
     static editarUsuario(idSelectedButton){
       let usuarios = localStorage.getItem("usuarios", JSON.parse(usuarios));
-      let usuario = usuarios.filter(usuario => usuario.id === idSelectedButton);
-      modal.showModal(usuarios);
-      usuario.nome = document.querySelector(".inputInformations.name").value;
-      usuario.gmail = document.querySelector(".inputInformations.gmail").value;
-     usuario.phone =  document.querySelector(".inputInformations.phone").value;
-     showUsers(usuarios);
-    }
+      let usuario = usuarios.find(usuario => usuario.id === idSelectedButton);
+      
+      modal.showModal();
 
+      let nome = document.querySelector(".inputInformations.name").value;
+      let gmail = document.querySelector(".inputInformations.gmail").value;
+     let phone =  document.querySelector(".inputInformations.phone").value;
+  
+     usuarios.forEach(usuario =>{
+      if(nome === "" || gmail ==="" || phone === "") { 
+        alert("Por favor, insira todos os seus dados!");
+      }
+      else if(usuario.gmail  === gmail) {
+        alert("Já tem um usuário com esse gmail");
+      }
+      else if(usuario.phone  === phone) {
+        alert("Já tem um usuário com esse telefone");
+      }
+    })
   }
+  }
+
 
 window.onload = function() {
   showUsers();
@@ -133,8 +146,10 @@ function gerarId() {
 
 }
 
-addClientBtn.addEventListener("click", () =>{
 
+addClientBtn.addEventListener("click", novoUsuario)
+
+  function novoUsuario() {
   let usuarios = JSON.parse(localStorage.getItem("usuarios"));
   modal.showModal();
 
@@ -149,28 +164,30 @@ addClientBtn.addEventListener("click", () =>{
     let gmail = document.querySelector(".inputInformations.gmail").value;
    let phone =  document.querySelector(".inputInformations.phone").value;
 
-   usuarios.forEach(usuario =>{
-    if(nome === "" || gmail ==="" || phone === "") { 
-      alert("Por favor, insira todos os seus dados!");
-    }
-    else if(usuario.gmail  === gmail) {
-      alert("Já tem um usuário com esse gmail");
-    }
-    else if(usuario.phone  === phone) {
-      alert("Já tem um usuário com esse telefone");
-    }
-    else { 
-    const idUsuario = gerarId();
-    const novoUsuario = new Usuario(idUsuario,nome,gmail,phone);
-  Usuario.salvarUsuario(novoUsuario);
-    showUsers();
-    modal.close();
+   if(nome === "" || gmail ==="" || phone === "") { 
+    alert("Por favor, insira todos os seus dados!");
+    return;
   }
-   })
-
-}
-})
-
+  
+  const emailExist = usuarios.some(usuario => usuario.gmail === gmail);
+  const phoneExist = usuarios.some(usuario => usuario.phone === phone);
+    if(emailExist) {
+      alert("Já tem um usuário com esse gmail");
+      return;
+    }
+    if(phoneExist) {
+      alert("Já tem um usuário com esse telefone");
+      return;
+    }
+  }
+   
+      const idUsuario = gerarId();
+      const novoUsuario = new Usuario(idUsuario,nome,gmail,phone);
+    Usuario.salvarUsuario(novoUsuario);
+      showUsers();
+      modal.close();
+    }
+    
 function search() {
   let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
  let usersFound = usuarios.filter(usuario => usuario.nome === searchName);
