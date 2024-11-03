@@ -13,10 +13,18 @@
         <h1 class="title">Cadastro de Clientes</h1>
     </nav>
 
+    <section id="searchNav">
+        <input placeholder="Insira o nome" class="searchBar name">
+        <input placeholder="Insira o telefone"class="searchBar phone">
+        <input placeholder="Insira o Gmail"class="searchBar gmail">
+
+    </section>
+
     <section id="table">
     <table>
         <thead>
         <tr>
+            <th class="tableProperties" scope="col"><h2>id</h2></th>
             <th class="tableProperties" scope="col"><h2>Nome</h2></th>
             <th class="tableProperties" scope="col"><h2>telefone</h2></th>
             <th class="tableProperties" scope="col"><h2>Gmail</h2></th>
@@ -32,7 +40,10 @@
 
   <dialog class="modal">
     <section id="sectionAddClient">
-        <h2 id="nexClient">Novo Cliente</h2>
+        <span id="navAddClient">
+        <h2 id="nextClient">Novo Cliente</h2>
+        <h2 id="closeAddClient">X</h2>
+    </span>
         <label class="insertInformations name">Insira o nome:
         <input type="text" class="inputInformations name">
     </label>

@@ -9,6 +9,12 @@ nav {
     border-radius: 25px;
 }
 
+#close {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
 #addClientBtn {
 padding: 15px;
 border: none;
@@ -54,13 +60,22 @@ width: 25vh;
     font-size: medium;
 }
 
-#nexClient {
+#nextClient {
     background-color: rgb(33, 167, 122);
     text-align: center;
     font-size: xx-large;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     object-fit: cover;
 
+}
+
+#closeAddClient {
+    cursor:pointer;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+#closeAddClient:hover{
+    font-size: xx-large;
 }
 
 #sectionAddClient  {
@@ -91,6 +106,17 @@ width: 25vh;
     margin: 8px 8px; /* Adiciona margem em cima e embaixo */
 }
 
+
+#searchNav {
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    margin: 5vh;
+}
+
+.searchBar {
+    margin: 3vh;
+}
 
 
 .inputInformations:hover {
