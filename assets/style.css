@@ -44,15 +44,6 @@ width: 25vh;
 }
 
 
-#deleteBtn {
-    background-color: red;
-
-}
-
-#deleteBtn:hover{
-    background-color: rgba(207, 0, 0, 0.822);
-}
-
 .actionBtn {
     padding: 2vh;
     border: 0px;
