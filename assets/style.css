@@ -3,30 +3,42 @@ nav {
     
 }
 
-#sendBtn {
-    padding: 30px;
-    width: 40vh;
-    border-radius: 25px;
-}
+
 
 #close {
-    display: flex;
-    justify-content: end;
-    align-items: end;
+align-items: end;
+ display: flex;
+justify-content: end;
+ 
 }
 
 #addClientBtn {
-padding: 15px;
+background-color: rgb(33, 167, 122);
 border: none;
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-background-color: rgb(33, 167, 122);
+padding: 15px;
 width: 25vh;
 }
 
+#sendBtn {
+    border-radius: 25px;
+    padding: 30px;
+    width: 40vh; 
+}
+.actionBtn {
+    border: 0px;
+    border-radius: 1vh;
+    padding: 2vh;
+    font-size: medium;
+}
+
+
 .title {
-    text-align: center;
-    font-size: xx-large;
+    
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: xx-large;
+    text-align: center;
+   
 }
 
 .tableProperties {
@@ -35,27 +47,20 @@ width: 25vh;
 }
 
 #table {
+    align-items: center;
     background-color: rgb(255, 243, 243);
     display: flex;
-    margin: 20px;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
+    margin: 20px;
+ 
+   
 }
-
-
-.actionBtn {
-    padding: 2vh;
-    border: 0px;
-    border-radius: 1vh;
-    font-size: medium;
-}
-
 #nextClient {
     background-color: rgb(33, 167, 122);
-    text-align: center;
-    font-size: xx-large;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: xx-large;
+    text-align: center;
     object-fit: cover;
 
 }
@@ -70,38 +75,38 @@ width: 25vh;
 }
 
 #sectionAddClient  {
+    align-items: center;
     background-color:azure;
+    border: 1px solid gray;
     display: flex;
-    width: 70vh;
+    flex-direction: column;
     height: 70vh;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border: 1px solid gray;
+    width: 70vh;
 
 }
 
 .insertInformations {
     display: block; /* Faz com que o label ocupe toda a largura disponível */
-    margin-top: 10px; /* Espaçamento entre os inputs */
     font-size: medium;
+    margin-top: 10px; /* Espaçamento entre os inputs */
     width: 80%
 }
 
 .inputInformations {
-    width: 90%; /* Faz com que o input ocupe toda a largura do seu container */
-    padding: 10px; /* Adiciona espaço interno ao input */
-    border: 1px solid #ccc; /* Define uma borda */
-    border-radius: 4px; /* Borda arredondada */
-    box-sizing: border-box; /* Inclui o padding e border na largura total do input */
-    margin: 8px 8px; /* Adiciona margem em cima e embaixo */
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    margin: 8px 8px; 
+    padding: 10px; 
+    width: 90%; 
 }
 
 
 #searchNav {
+    align-items: center;
     display:flex;
     justify-content:center;
-    align-items: center;
     margin: 5vh;
 }
 
@@ -114,19 +119,14 @@ width: 25vh;
     border: 3px solid green;
 }
 
-#llll {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .modal {
-    position: fixed; /* Fixa o modal na tela */
-    top: 50%; /* Centraliza verticalmente */
-    left: 50%; /* Centraliza horizontalmente */
-    transform: translate(-50%, -50%); /* Move o modal para o centro */
+    left: 50%;
+    position: fixed; 
+    transform: translate(-50%, -50%); 
+    top: 50%; 
 }
 
 .modal::backdrop {
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semitransparente */
+    background-color: rgba(0, 0, 0, 0.5);
 }
