@@ -13,7 +13,6 @@
         <h1 class="title">Cadastro de Clientes</h1>
     </nav>
 
-
     <section id="table">
     <table>
         <thead>
@@ -29,8 +28,9 @@
     </tbody>
     </table>
     <button id="addClientBtn">CADASTRAR CLIENTE</button>
-
   </section>
+
+  <div id="feedback" class="hidden"></div>
 
   <dialog class="modal">
     <section id="sectionAddClient">
@@ -42,10 +42,10 @@
         <input type="text" class="inputInformations name">
     </label>
     <label  class="insertInformations phone ">Insira o telefone:
-        <input type="text" class="inputInformations phone">
+        <input type="text" class="inputInformations phone" placeholder="(XX) XXXXX-XXXX">
     </label>
     <label class="insertInformations gmail">Insira o Gmail:
-        <input type="text" class="inputInformations gmail">
+        <input type="text" class="inputInformations gmail" placeholder="seugmail@gmail.com">
     </label>
     <button id="sendBtn">Enviar</button>
 </section>

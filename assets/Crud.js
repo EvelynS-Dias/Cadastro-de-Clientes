@@ -37,12 +37,13 @@ addClientBtn.addEventListener("click", () =>{
     return maxId + 1;
   }
 
-  function sendInformations(nome,gmail,phone){
+  function sendInformations(nome,phone,gmail){
   const id = gerarId();
-  const novoUsuario = new Usuario(id,nome,gmail,phone);
+  const novoUsuario = new Usuario(id,nome,phone,gmail);
   createUser(novoUsuario);
   updateTable();
   modal.close();
+  cleanForm();
   }
 
 
@@ -91,7 +92,7 @@ let phoneExisted = usuarios.some(usuario => usuario.phone === phone);
     alert("Já tem um usuário com esse telefone");
     return;
   }
-  sendInformations(nome,gmail,phone);
+  sendInformations(nome,phone,gmail);
 }
 
 
@@ -124,25 +125,31 @@ const createUser  = (novoUsuario) => {
        document.querySelector(".inputInformations.name").value = usuario.name;
       document.querySelector(".inputInformations.gmail").value = usuario.gmail;
       document.querySelector(".inputInformations.phone").value = usuario.phone;
-
-      sendBtn.onclick = () => { 
-        usuario.name = document.querySelector(".inputInformations.name").value; 
-        usuario.gmail = document.querySelector(".inputInformations.gmail").value; 
-        usuario.phone = document.querySelector(".inputInformations.phone").value;
-        usuarios[index]  = usuario;
-      setLocalStorage(usuarios);
-      updateTable();
-      modal.close();
-
-      sendBtn.onclick = saveUser;
-    };
+      sendBtn.onclick = saveEdits; 
     }
     else{
       alert("Falha para editar o usuário, por favor, tente mais tarde!");
     }
-    
-  };
+  }
+
+  const saveEdits = () => {
+    usuario.name = document.querySelector(".inputInformations.name").value; 
+    usuario.gmail = document.querySelector(".inputInformations.gmail").value; 
+    usuario.phone = document.querySelector(".inputInformations.phone").value;
+    usuarios[index]  = usuario;
+  setLocalStorage(usuarios);
+  updateTable();
+  modal.close();
+  sendBtn.onclick = saveUser; 
+  cleanForm();
+  }
+
+  const cleanForm  = () => {
+    document.querySelector(".inputInformations.name").value = '';
+    document.querySelector(".inputInformations.gmail").value = '';
+    document.querySelector(".inputInformations.phone").value = '';
+  }
 
   sendBtn.onclick = saveUser;
+  updateTable();
 
-  updateTable
