@@ -1,8 +1,18 @@
+@media (max-width: 600px) {
+    table {
+        display: block;
+        flex-wrap: wrap;
+        width: 100%;
+        overflow-x: auto;
+        margin-bottom: 10px;
+    }
+}
+
+
 nav {
     background-color: rgb(33, 167, 122);
     
 }
-
 
 
 #close {
@@ -62,12 +72,26 @@ width: 25vh;
     font-size: xx-large;
     text-align: center;
     object-fit: cover;
+    width: 100%;
 
 }
 
+#navAddClient {
+position: absolute;
+justify-content: space-between;
+align-items: center;
+top: 0;
+width: 100%;
+display: flex;
+
+}
+
+
 #closeAddClient {
     cursor:pointer;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    position: absolute;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    right: 15px;
 }
 
 #closeAddClient:hover{
