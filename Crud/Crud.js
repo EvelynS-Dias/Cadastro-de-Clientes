@@ -5,66 +5,57 @@ class Usuario {
     this.phone = phone;
     this.gmail = gmail; 
   }
-    static salvarUsuario(novoUsuario) {
+    static createUser (novoUsuario) {
     let usuarios = getLocalStorage();
     usuarios.push(novoUsuario);
     setLocalStorage(usuarios);
-    showUsers(usuarios);
     }
-    static deletarUsuario(idUsuario){
+    static deleteUser(index){
       let usuarios = getLocalStorage();
-      let usuariosFiltrados = usuarios.filter(usuario => usuario.id !== idUsuario);
-      console.log(usuariosFiltrados);
-      setLocalStorage(usuariosFiltrados);
-      showUsers(usuariosFiltrados);
+      usuarios.splice(index,1); //a partir do index, tirar só um
+      setLocalStorage(usuarios);
     }
-    static editarUsuario(idSelectedButton){
+    static editUser(index, usuario){
       let usuarios = getLocalStorage();
-      let usuario = usuarios.find(usuario => usuario.id === idSelectedButton);
       modal.showModal();
       usuario.name = document.querySelector(".inputInformations.name").value;
       usuario.gmail = document.querySelector(".inputInformations.gmail").value;
       usuario.phone =  document.querySelector(".inputInformations.phone").value;
+      usuarios[index]  = usuario;
       setLocalStorage(usuarios);
-     showUsers(usuarios);
+      updateTable();
+      modal.close();
     }
 
   }
 
-window.onload = function() {
-  showUsers();
-};
 
 //DOM 
 const addClientBtn = document.getElementById("addClientBtn");
 const sectionAddClient = document.getElementById("sectionAddClient");
 const insertInformations = document.querySelectorAll(".insertInformations");
 const tbody = document.querySelector("tbody");
-const thead = document.querySelector("thead");
 const modal = document.querySelector(".modal");
 const sendBtn = document.querySelector("#sendBtn");
 const closeAddClient = document.querySelector("#closeAddClient");
-const searchName = document.querySelector(".searchBar.name");
-const searchGmail = document.querySelector(".searchBar.gmail");
-const searchPhone = document.querySelector(".searchBar.phone");
-const allSearchBar = document.querySelectorAll(".searchBar");
 
 const getLocalStorage = () =>JSON.parse(localStorage.getItem('usuarios')) || [];
 const setLocalStorage = (usuarios) => localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
 
-searchPhone.addEventListener('input', (e) => {
+/*searchPhone.addEventListener('input', (e) => {
 let inputSearchName = e.target.value;
 
+const search = () => { 
 console.log(inputSearchName);
 if(inputSearchName !== '' || searchGmail !== '' || searchPhone !== '') {
 FormatString(inputSearchName);
 search(inputSearchName);
-}})
+}}) 
 
 function FormatString(inputSearch) {
   return inputSearch.toLowerCase().trim();
-}
+} */
 
 let id = 0;
 
@@ -75,64 +66,44 @@ addClientBtn.addEventListener("click", () =>{
     modal.close();
   }} )
 
-  sendBtn.onclick = function()  { 
-    let nome = document.querySelector(".inputInformations.name").value;
-    let gmail = document.querySelector(".inputInformations.gmail").value;
-    let phone =  document.querySelector(".inputInformations.phone").value;
-
-    if(nome === "" || gmail === "" || phone === "") { 
-      alert("Por favor, insira todos os seus dados!");
-      return;
-    }
- 
-  let usuarios = JSON.parse(localStorage.getItem("usuarios"));
-  gmailExisted = usuarios.some(usuario => usuario.gmail === gmail);
-  phoneExisted = usuarios.some(usuario => usuario.phone === phone);
-    if(gmailExisted) {
-      alert("Já tem um usuário com esse gmail");
-      return;
-    }
-    if(phoneExisted) {
-      alert("Já tem um usuário com esse telefone");
-      return;
-    }
-
-    sendInformations(usuarios,nome,gmail,phone);
-  }
-
+  sendBtn.onclick = saveUser;
+     
   
-
-
   
 function gerarId() {
   return id++;
 }
-
+/*
 function search(input) {
   let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
     let usersFound = usuarios.filter(usuario => usuario.name === input);
     if(usersFound.length > 0  ) {
-      showUsers(usersFound);
     }
     else {
-      showUsers(usuarios);
+      const noFound = document.createElement("p") 
+      noFound.innerText =  "No User Found! :("
     }
-    }
+    } */
 
   function sendInformations(nome,gmail,phone){
   const idUsuario = gerarId();
   const novoUsuario = new Usuario(idUsuario,nome,gmail,phone);
-  Usuario.salvarUsuario(novoUsuario);
+  Usuario.createUser(novoUsuario);
+  createTable(novoUsuario);
   modal.close();
   }
 
+
+  const updateTable = () => {
+    const usuarios = getLocalStorage();
+    tbody.innerHTML ="";
+    usuarios.forEach(createTable);
+  }
   
-function showUsers(users) {
-  tbody.innerHTML = '';
-  users = users || getLocalStorage();
+function createTable(user) {
+  user = user || getLocalStorage();
   
   // Para cada usuário, cria uma nova linha na tabela
-  users.forEach(user => {
   const spaceTable = document.createElement("tr");
   spaceTable.classList.add("spaceTable");
   tbody.appendChild(spaceTable);
@@ -186,15 +157,39 @@ editBtn.addEventListener("click", (event)=>{
 let idSelectedButton = event.currentTarget;
 idSelectedButton = parseInt(idSelectedButton.getAttribute("data-id"));
 console.log(idSelectedButton);
-Usuario.editarUsuario(idSelectedButton);
+Usuario.editUser(idSelectedButton, usuario);
 });
 
 
 deleteBtn.addEventListener("click", (event)=>{
 let idSelectedButton = event.currentTarget;
 idSelectedButton = parseInt(idSelectedButton.getAttribute("data-id"));
- Usuario.deletarUsuario(idSelectedButton);
+ Usuario.deleteUser(idSelectedButton);
   });
 
 }
-)}
+
+const saveUser = () => {
+  let nome = document.querySelector(".inputInformations.name").value;
+  let gmail = document.querySelector(".inputInformations.gmail").value;
+  let phone =  document.querySelector(".inputInformations.phone").value;
+
+  if(nome === "" || gmail === "" || phone === "") { 
+    alert("Por favor, insira todos os seus dados!");
+    return;
+  }
+
+let usuarios = getLocalStorage();
+gmailExisted = usuarios.some(usuario => usuario.gmail === gmail);
+phoneExisted = usuarios.some(usuario => usuario.phone === phone);
+  if(gmailExisted) {
+    alert("Já tem um usuário com esse gmail");
+    return;
+  }
+  if(phoneExisted) {
+    alert("Já tem um usuário com esse telefone");
+    return;
+  }
+
+  sendInformations(nome,gmail,phone);
+}
