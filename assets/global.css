@@ -5,7 +5,8 @@
 
 
 .hidden {
-display: none !important;
+opacity: 0%;
+transform: translateX(100%);
 }
 
 .modal{

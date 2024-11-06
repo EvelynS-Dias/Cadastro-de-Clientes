@@ -13,11 +13,7 @@
         <h1 class="title">Cadastro de Clientes</h1>
     </nav>
 
-    <section id="searchNav">
-        <input placeholder="Insira o nome" class="searchBar name">
-        <input placeholder="Insira o telefone"class="searchBar phone">
-        <input placeholder="Insira o Gmail"class="searchBar gmail">
-    </section>
+    
     <section id="table">
     <table>
         <thead>
@@ -35,7 +31,13 @@
     <button id="addClientBtn">CADASTRAR CLIENTE</button>
   </section>
 
-  <div id="feedback" class="hidden"></div>
+  <div id="feedback" class="hidden">
+    <h2 id="titleError">Erro!</h2>
+    <span id="messageContainer">
+    <p id="message"></p>
+<h4 id="closeMessage" class="closeButton">X</h4>
+    </span>
+</div>
 
   <dialog class="modal">
     <section id="sectionAddClient">

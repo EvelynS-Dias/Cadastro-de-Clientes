@@ -103,17 +103,6 @@ width: 25vh;
 }
 
 
-#searchNav {
-    align-items: center;
-    display:flex;
-    justify-content:center;
-    margin: 5vh;
-}
-
-.searchBar {
-    margin: 3vh;
-}
-
 
 .inputInformations:hover {
     border: 3px solid green;
@@ -125,8 +114,67 @@ width: 25vh;
     position: fixed; 
     transform: translate(-50%, -50%); 
     top: 50%; 
+    z-index: 999;
 }
 
 .modal::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+#feedback {
+    position: fixed;
+    top: 10px;
+    right: 40px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+  width: auto; 
+   max-width: 300px; 
+   height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; 
+
+    border-radius: 5px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#ErrorContainer {
+    border: 2px solid rgb(204, 29, 29);
+    background-color: rgb(226, 75, 75);
+}
+
+#WarningContainer {
+    border: 2px solid rgb(204, 163, 29);
+    background-color: rgb(223, 226, 75);
+}
+
+#SucessfulContainer {
+    border: 2px solid rgb(35, 204, 29);
+    background-color: rgb(75, 226, 75);
+}
+
+
+
+
+#message{
+text-align: center;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#messageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button {
+cursor: pointer;
+}
+
+.titleError {
+    padding-bottom: 10%;
+    position: absolute;
+    font-size: large;
 }

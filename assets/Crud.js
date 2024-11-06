@@ -77,20 +77,23 @@ const saveUser = () => {
   let phone =  document.querySelector(".inputInformations.phone").value;
 
   if(nome === "" || gmail === "" || phone === "") { 
-    alert("Por favor, insira todos os seus dados!");
-    return;
+  let message = "Por favor, Insira todos os seus dados!";
+  showMessage(message,'warning');
+  return;
   }
 
 let usuarios = getLocalStorage();
 let gmailExisted = usuarios.some(usuario => usuario.gmail === gmail);
 let phoneExisted = usuarios.some(usuario => usuario.phone === phone);
   if(gmailExisted) {
-    alert("Já tem um usuário com esse gmail");
+    let message = "Por favor, Insira todos os seus dados!";
+    showMessage(message,'warning');
     return;
   }
   if(phoneExisted) {
-    alert("Já tem um usuário com esse telefone");
-    return;
+    let message = "Por favor, Insira todos os seus dados!";
+  showMessage(message,'warning');
+  return;
   }
   sendInformations(nome,phone,gmail);
 }
@@ -112,7 +115,8 @@ const createUser  = (novoUsuario) => {
       updateTable();
     }
     else{
-      alert("Usuário não encontrado!");
+      let message = "Usuário não encontrado!";
+      showMessage(message,'error');
     }
   }
 
@@ -128,11 +132,15 @@ const createUser  = (novoUsuario) => {
       sendBtn.onclick = saveEdits; 
     }
     else{
-      alert("Falha para editar o usuário, por favor, tente mais tarde!");
+      let message = "Falha para editar o usuário, por favor, tente mais tarde!";
+      showMessage(message, 'error');
     }
   }
 
   const saveEdits = () => {
+   let usuarios = getLocalStorage(); 
+      const index = usuarios.findIndex(usuario => usuario.id === id);
+       let usuario = usuarios[index]
     usuario.name = document.querySelector(".inputInformations.name").value; 
     usuario.gmail = document.querySelector(".inputInformations.gmail").value; 
     usuario.phone = document.querySelector(".inputInformations.phone").value;
@@ -153,3 +161,36 @@ const createUser  = (novoUsuario) => {
   sendBtn.onclick = saveUser;
   updateTable();
 
+
+  showMessage = (message,option) => {
+    const feedback = document.getElementById("feedback");
+    const closeMessage = document.getElementById("closeMessage");
+
+    if(option === "warning") { 
+      feedback.classList.add("WarningContainer");
+       } 
+    else if(option === "error") { 
+      feedback.classList.add("ErrorContainer");
+     } 
+    else if(option === "sucess") { 
+      feedback.classList.add("SucessfulContainer");
+     }
+     else{
+      feedback.classList.add('');
+
+     }
+  
+      feedback.className.remove('hidden');
+
+  
+    const messageElement = document.getElementById("message");
+    messageElement.textContent = message;
+
+
+    setTimeout(() => {
+      messageElement.innerHTML = '';
+      feedback.className = 'hidden'; 
+    }, 3000);
+  }
+
+  
